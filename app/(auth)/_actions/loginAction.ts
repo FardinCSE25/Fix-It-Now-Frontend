@@ -47,7 +47,6 @@ export const loginAction = async (
   );
 
   const result = await res.json();
-console.log(result);
 
   if (!result.success) {
     return {
@@ -79,13 +78,13 @@ console.log(result);
 
   switch (decodedToken.role) {
     case "Customer":
-      redirect("/dashboard/customer");
+      redirect("/dashboard");
 
     case "Technician":
-      redirect("/dashboard/technician");
+      redirect("/technician-dashboard");
 
     case "Admin":
-      redirect("/dashboard/admin");
+      redirect("/admin-dashboard");
 
     default:
       redirect("/");

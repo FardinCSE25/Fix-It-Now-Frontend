@@ -1,4 +1,4 @@
-import { LayoutDashboard, Settings, User } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 
 export const navItems = [
     {
@@ -14,12 +14,8 @@ export const navItems = [
         href: "/technicians",
     },
     {
-        label: "About",
-        href: "/about",
-    },
-    {
-        label: "Contact",
-        href: "/contact",
+        label: "Categories",
+        href: "/categories",
     },
 ];
 
@@ -29,15 +25,5 @@ export const userMenuItems = [
         label: "Dashboard",
         icon: LayoutDashboard,
         action: "dashboard",
-    },
-    {
-        label: "Profile",
-        icon: User,
-        action: "profile",
-    },
-    {
-        label: "Settings",
-        icon: Settings,
-        action: "settings",
     },
 ];

@@ -1,0 +1,59 @@
+import { SidebarItem } from "@/lib/types/SidebarItems";
+import {
+    CalendarClock,
+    CalendarDays,
+    CreditCard,
+    FolderKanban,
+    UserCheck2,
+    Users,
+} from "lucide-react";
+
+const CUSTOMER_SIDEBAR_ITEMS: SidebarItem[] = [
+    {
+        label: "My Payments",
+        href: "/dashboard/my-payments",
+        icon: CreditCard,
+    },
+];
+
+const TECHNICIAN_SIDEBAR_ITEMS: SidebarItem[] = [
+    {
+        label: "My Profile",
+        href: "/technician-dashboard/my-profile",
+        icon: UserCheck2,
+    },
+    {
+        label: "My Availability Schedule",
+        href: "/technician-dashboard/availability",
+        icon: CalendarClock,
+    },
+    {
+        label: "My Bookings",
+        href: "/technician-dashboard/my-bookings",
+        icon: CalendarDays,
+    },
+];
+
+const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
+    {
+        label: "Users",
+        href: "/admin-dashboard/users",
+        icon: Users,
+    },
+    {
+        label: "All Bookings",
+        href: "/admin-dashboard/bookings",
+        icon: CalendarDays,
+    },
+    {
+        label: "All Categories",
+        href: "/admin-dashboard/categories",
+        icon: FolderKanban,
+    },
+];
+
+export const sidebarMenuItems = {
+    Customer: CUSTOMER_SIDEBAR_ITEMS,
+    Technician: TECHNICIAN_SIDEBAR_ITEMS,
+    Admin: ADMIN_SIDEBAR_ITEMS,
+};

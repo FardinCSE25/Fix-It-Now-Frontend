@@ -43,15 +43,15 @@ export default function Navbar(
         if (action === "dashboard") {
             switch (user?.data?.role) {
                 case "Customer":
-                    router.push("/dashboard/customer");
+                    router.push("/dashboard");
                     break;
 
                 case "Technician":
-                    router.push("/dashboard/technician");
+                    router.push("/technician-dashboard");
                     break;
 
                 case "Admin":
-                    router.push("/dashboard/admin");
+                    router.push("/admin-dashboard");
                     break;
             }
 
@@ -176,16 +176,16 @@ export default function Navbar(
                         </DropdownMenu>
                     ) : (
                         <>
-                        <Link href="/login">
-                            <Button className="bg-linear-to-r from-primary to-secondary text-white shadow-md transition hover:scale-105">
-                                Login
-                            </Button>
-                        </Link>
-                        <Link href="/register">
-                            <Button className="bg-linear-to-r from-primary to-secondary text-white shadow-md transition hover:scale-105">
-                                Register
-                            </Button>
-                        </Link>
+                            <Link href="/login">
+                                <Button className="bg-linear-to-r from-primary to-secondary text-white shadow-md transition hover:scale-105">
+                                    Login
+                                </Button>
+                            </Link>
+                            <Link href="/register">
+                                <Button className="bg-linear-to-r from-primary to-secondary text-white shadow-md transition hover:scale-105">
+                                    Register
+                                </Button>
+                            </Link>
                         </>
                     )}
 

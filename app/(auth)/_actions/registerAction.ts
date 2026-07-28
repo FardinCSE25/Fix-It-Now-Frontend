@@ -73,8 +73,6 @@ export const registerAction = async (
 
     }
 
-console.log(payload);
-
     const res = await fetch(
         `${process.env.BACKEND_API_URL}/api/auth/register`,
         {

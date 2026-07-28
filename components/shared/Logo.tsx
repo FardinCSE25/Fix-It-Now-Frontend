@@ -28,7 +28,7 @@ export default function Logo({
       {showText && (
         <div className="leading-tight">
           <h2 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-2xl font-extrabold tracking-tight text-transparent">
-            FixItNow
+            Fix It Now
           </h2>
 
           <p className="text-xs text-muted-foreground">
