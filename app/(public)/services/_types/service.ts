@@ -1,15 +1,30 @@
+export type Booking = {
+  id: string;
+  customerId: string;
+  technicianId: string;
+  serviceId: string;
+  status: "Pending" | "Accepted" | "Completed" | "Cancelled";
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type Availability = {
+  workingDays: string[];
+  startTime: string;
+  endTime: string;
+};
+
 export type TechnicianProfile = {
   id: string;
   userId: string;
-  experience: number;
+  experience: string;
   bio: string | null;
 };
 
 export type Technician = {
-  id: string;
-  name: string;
-  email: string;
   technicianProfile: TechnicianProfile;
+  availability: Availability;
+  technicianReviews: unknown[];
 };
 
 export type Category = {
@@ -25,6 +40,8 @@ export type Service = {
   price: string;
   createdAt: string;
   updatedAt: string;
+
+  bookings: Booking[];
 
   category: Category;
   technician: Technician;

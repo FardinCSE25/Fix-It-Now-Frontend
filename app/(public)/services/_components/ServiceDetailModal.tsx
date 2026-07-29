@@ -31,6 +31,10 @@ export default function ServiceDetailModal({
 }: Props) {
     if (!service) return null;
 
+    const booking = service.bookings[0];
+
+    const status = booking?.status;
+
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
             <DialogContent className="sm:max-w-2xl">
@@ -157,6 +161,36 @@ export default function ServiceDetailModal({
                                 ).toLocaleDateString()}
                             </p>
                         </div>
+                    </div>
+
+                    <div className="rounded-xl border p-4">
+                        <div className="mb-2 flex items-center gap-2">
+                            <Calendar className="h-5 w-5 text-primary" />
+
+                            <span className="font-semibold">
+                                Booking Status
+                            </span>
+                        </div>
+
+                        {booking ? (
+                            <Badge
+                                className={
+                                    status === "Pending"
+                                        ? "bg-yellow-500 hover:bg-yellow-500 ml-6"
+                                        : status === "Accepted"
+                                            ? "bg-blue-600 hover:bg-blue-600 ml-6"
+                                            : status === "Completed"
+                                                ? "bg-green-600 hover:bg-green-600 ml-6"
+                                                : "bg-red-600 hover:bg-red-600 ml-6"
+                                }
+                            >
+                                {status}
+                            </Badge>
+                        ) : (
+                            <Badge className="ml-6" variant="default">
+                                Not Booked yet
+                            </Badge>
+                        )}
                     </div>
                 </div>
             </DialogContent>

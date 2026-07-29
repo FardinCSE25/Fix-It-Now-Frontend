@@ -7,10 +7,12 @@ import ServiceCard from "./ServiceCard";
 import ServiceDetailModal from "./ServiceDetailModal";
 
 type Props = {
+  isTechnician: boolean;
   services: Service[];
 };
 
 export default function ServiceGrid({
+  isTechnician,
   services,
 }: Props) {
   const [selectedService, setSelectedService] =
@@ -23,6 +25,7 @@ console.log(services);
         {services.map((service) => (
           <ServiceCard
             key={service.id}
+            isTechnician={isTechnician}
             service={service}
             onView={setSelectedService}
           />

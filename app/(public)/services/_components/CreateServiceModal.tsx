@@ -38,7 +38,7 @@ export default function CreateServiceModal({
   onOpenChange,
   categories,
 }: Props) {
-  // এখানে স্টেট-এ Title সেভ রাখবো যেন UI-তে নাম দেখায়
+  
   const [selectedCategoryTitle, setSelectedCategoryTitle] = useState<string>("");
   const [state, action, pending] = useActionState(createServiceAction, null);
 
@@ -56,12 +56,11 @@ export default function CreateServiceModal({
 
   const handleOpenChange = (isOpen: boolean) => {
     if (!isOpen) {
-      setSelectedCategoryTitle(""); // মোডাল বন্ধ হলে রিসেট
+      setSelectedCategoryTitle("");
     }
     onOpenChange(isOpen);
   };
 
-  // Selected Title থেকে আসল Category ID টা বের করা হচ্ছে
   const selectedCategoryId =
     categories.find((cat) => cat.title === selectedCategoryTitle)?.id ?? "";
 
