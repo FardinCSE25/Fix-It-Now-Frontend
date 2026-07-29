@@ -28,7 +28,8 @@ export default async function ServicesPage({
         user?.data?.role === "Technician";
 
     return (
-        <section className="space-y-8 my-14 container mx-auto">
+        <div className="bg-gray-100">
+        <section className="space-y-8 py-14 container mx-auto">
             {/* Header */}
             <ServicesHeader isTechnician={isTechnician} categories={categories.data} />
 
@@ -36,5 +37,6 @@ export default async function ServicesPage({
             <ServiceGrid services={services.data} />
 
         </section>
+        </div>
     );
 }

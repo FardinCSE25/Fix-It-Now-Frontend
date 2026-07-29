@@ -1,24 +1,23 @@
 "use client";
 
 import { Loader2, Plus } from "lucide-react";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 
 import { Button } from "@/components/ui/button";
@@ -39,63 +38,61 @@ export default function CreateServiceModal({
   onOpenChange,
   categories,
 }: Props) {
-  const [state, action, pending] = useActionState(
-    createServiceAction,
-    null
-  );
+  // এখানে স্টেট-এ Title সেভ রাখবো যেন UI-তে নাম দেখায়
+  const [selectedCategoryTitle, setSelectedCategoryTitle] = useState<string>("");
+  const [state, action, pending] = useActionState(createServiceAction, null);
 
   useEffect(() => {
     if (!state) return;
 
     if (state.success) {
       toast.success(state.message);
-
       onOpenChange(false);
-
       return;
     }
 
     toast.error(state.message);
   }, [state, onOpenChange]);
 
+  const handleOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      setSelectedCategoryTitle(""); // মোডাল বন্ধ হলে রিসেট
+    }
+    onOpenChange(isOpen);
+  };
+
+  // Selected Title থেকে আসল Category ID টা বের করা হচ্ছে
+  const selectedCategoryId =
+    categories.find((cat) => cat.title === selectedCategoryTitle)?.id ?? "";
+
   return (
-    <Dialog
-      open={open}
-      onOpenChange={onOpenChange}
-    >
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>
-            Create New Service
-          </DialogTitle>
-
+          <DialogTitle>Create New Service</DialogTitle>
           <DialogDescription>
             Add a new service that customers can book.
           </DialogDescription>
         </DialogHeader>
 
-        <form
-          action={action}
-          className="space-y-5"
-        >
+        <form action={action} className="space-y-5">
           {/* Category */}
-
           <div className="space-y-2">
-            <label className="text-sm font-medium">
-              Category
-            </label>
+            <label className="text-sm font-medium">Category</label>
+            <input type="hidden" name="categoryId" value={selectedCategoryId} />
 
-            <Select name="categoryId" required>
+            <Select
+              value={selectedCategoryTitle}
+              onValueChange={(val) => setSelectedCategoryTitle(val ?? "")}
+              required
+            >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select Category" />
               </SelectTrigger>
 
               <SelectContent>
                 {categories.map((category) => (
-                  <SelectItem
-                    key={category.id}
-                    value={category.id}
-                  >
+                  <SelectItem key={category.id} value={category.title}>
                     {category.title}
                   </SelectItem>
                 ))}
@@ -104,26 +101,14 @@ export default function CreateServiceModal({
           </div>
 
           {/* Title */}
-
           <div className="space-y-2">
-            <label className="text-sm font-medium">
-              Service Title
-            </label>
-
-            <Input
-              name="title"
-              required
-              placeholder="Split AC Installation"
-            />
+            <label className="text-sm font-medium">Service Title</label>
+            <Input name="title" required placeholder="Split AC Installation" />
           </div>
 
           {/* Description */}
-
           <div className="space-y-2">
-            <label className="text-sm font-medium">
-              Description
-            </label>
-
+            <label className="text-sm font-medium">Description</label>
             <Textarea
               name="description"
               rows={5}
@@ -133,12 +118,8 @@ export default function CreateServiceModal({
           </div>
 
           {/* Price */}
-
           <div className="space-y-2">
-            <label className="text-sm font-medium">
-              Price (৳)
-            </label>
-
+            <label className="text-sm font-medium">Price (৳)</label>
             <Input
               name="price"
               type="number"
@@ -148,11 +129,7 @@ export default function CreateServiceModal({
             />
           </div>
 
-          <Button
-            type="submit"
-            disabled={pending}
-            className="w-full"
-          >
+          <Button type="submit" disabled={pending} className="w-full">
             {pending ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

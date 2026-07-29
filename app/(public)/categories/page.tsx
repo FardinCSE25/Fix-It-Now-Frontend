@@ -12,15 +12,16 @@ export default async function CategoriesPage() {
     const isAdmin = user?.data?.role === "Admin";
 
     return (
-        <section className="space-y-8 my-12 container mx-auto">
+       <div className="bg-gray-100">
+         <section className="space-y-8 py-12 container mx-auto">
 
             <CategoryHeader isAdmin={isAdmin} />
-
 
             {/* Categories */}
             <CategoryGrid
                 categories={categories.data}
             />
         </section>
+       </div>
     );
 }

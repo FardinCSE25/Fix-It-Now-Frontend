@@ -15,6 +15,7 @@ export default function ServiceGrid({
 }: Props) {
   const [selectedService, setSelectedService] =
     useState<Service | null>(null);
+console.log(services);
 
   return (
     <>
