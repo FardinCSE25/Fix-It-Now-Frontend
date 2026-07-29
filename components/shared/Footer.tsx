@@ -20,8 +20,8 @@ export default function Footer() {
                 <div className="grid gap-10 md:grid-cols-3">
                     {/* Brand */}
                     <div className="space-y-4">
-                        <h2 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent">
-                            FixItNow
+                        <h2 className="bg-linear-to-r from-primary to-secondary bg-clip-text text-2xl font-bold text-transparent">
+                            Fix It Now
                         </h2>
 
                         <p className="max-w-sm text-sm leading-6 text-muted-foreground">
