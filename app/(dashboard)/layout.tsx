@@ -24,7 +24,7 @@ const DashboardLayout = async ({
           </header>
 
           {/* Main Content Area */}
-          <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
         </div>
       </div>
     </SidebarProvider>
