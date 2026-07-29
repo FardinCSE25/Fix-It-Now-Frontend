@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { getMe } from "@/services/getMe";
 
@@ -9,11 +10,12 @@ const PublicGroupLayout = async (
     }
 ) => {
     const user = await getMe();
-    
+
     return (
         <div>
             <Navbar user={user} />
             {children}
+            <Footer />
         </div>
     )
 }

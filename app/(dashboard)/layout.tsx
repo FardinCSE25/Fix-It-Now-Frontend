@@ -1,4 +1,4 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { getMe } from "@/services/getMe";
 import DashboardSidebar from "./_components/DashboardSidebar";
 
@@ -7,6 +7,7 @@ const DashboardLayout = async ({
 }: {
   children: React.ReactNode;
 }) => {
+    
   const user = await getMe();
 
   return (
@@ -17,8 +18,7 @@ const DashboardLayout = async ({
         <div className="flex flex-1 flex-col min-w-0">
           {/* Header Bar */}
           <header className="flex h-14 items-center gap-4 border-b bg-background px-6">
-            <SidebarTrigger />
-            <h1 className="text-sm font-semibold capitalize">
+            <h1 className="text-xl font-semibold capitalize">
               {user?.data?.role} Dashboard
             </h1>
           </header>
