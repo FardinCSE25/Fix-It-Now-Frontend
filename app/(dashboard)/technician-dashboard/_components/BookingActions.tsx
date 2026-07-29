@@ -40,9 +40,7 @@ export default function BookingActions({
             if (result.success) {
                 toast.success(result.message);
 
-                setTimeout(() => {
-                    router.refresh();
-                }, 300);
+                router.refresh();
             } else {
                 toast.error(result.message);
             }
@@ -100,27 +98,27 @@ export default function BookingActions({
         );
     }
 
-   if(booking.status === "Accepted"){
-     return (
-        <Button
-            size="sm"
-            disabled
-            variant="secondary"
-            className="text-white"
-        >
-            Waiting for Payment
-        </Button>
-    );
-   }
-   else{
-    return (
-        <Button
-            size="sm"
-            disabled
-            variant="destructive"
-        >
-            Rejected
-        </Button>
-    )
-   }
+    if (booking.status === "Accepted") {
+        return (
+            <Button
+                size="sm"
+                disabled
+                variant="secondary"
+                className="text-white"
+            >
+                Waiting for Payment
+            </Button>
+        );
+    }
+    else {
+        return (
+            <Button
+                size="sm"
+                disabled
+                variant="destructive"
+            >
+                Rejected
+            </Button>
+        )
+    }
 }
