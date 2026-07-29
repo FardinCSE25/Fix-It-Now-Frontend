@@ -6,6 +6,10 @@ export const navItems = [
         href: "/",
     },
     {
+        label: "Categories",
+        href: "/categories",
+    },
+    {
         label: "Services",
         href: "/services",
     },
@@ -13,10 +17,7 @@ export const navItems = [
         label: "Technicians",
         href: "/technicians",
     },
-    {
-        label: "Categories",
-        href: "/categories",
-    },
+
 ];
 
 

@@ -1,4 +1,3 @@
-
 import { getMe } from "@/services/getMe";
 
 import { getAllCategories } from "./_actions/getAllCategories";
@@ -6,10 +5,9 @@ import CategoryGrid from "./_components/CategoryGrid";
 import CategoryHeader from "./_components/CategoryHeader";
 
 export default async function CategoriesPage() {
-    const [categories, user] = await Promise.all([
-        getAllCategories(),
-        getMe(),
-    ]);
+
+    const categories = await getAllCategories()
+    const user = await getMe()
 
     const isAdmin = user?.data?.role === "Admin";
 
