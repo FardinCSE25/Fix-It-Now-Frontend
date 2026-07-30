@@ -8,12 +8,12 @@ import { Separator } from "@/components/ui/separator";
 import {
     Calendar,
     Clock3,
-    CreditCard,
     Mail,
     UserRound,
-    Wrench,
+    Wrench
 } from "lucide-react";
 import { Booking } from "../_types/booking";
+import PayNowButton from "./PayNowButton";
 
 type Props = {
     booking: Booking;
@@ -251,13 +251,10 @@ export default function BookingDetailsCard({
                             {!booking.payment &&
                                 booking.status ===
                                 "Accepted" && (
-                                    <Button
-                                        className="mt-6 w-full"
-                                        size="lg"
-                                    >
-                                        <CreditCard className="mr-2 size-5" />
-                                        Pay Now
-                                    </Button>
+                                    <PayNowButton
+                                        bookingId={booking.id}
+                                        size="sm"
+                                    />
                                 )}
 
                             {booking.payment && (

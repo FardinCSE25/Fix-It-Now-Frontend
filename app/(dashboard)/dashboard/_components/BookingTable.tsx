@@ -53,10 +53,6 @@ export default function BookingTable({ bookings }: Props) {
 
                             <TableHead>Booked At</TableHead>
 
-                            {/* <TableHead className="text-right">
-                                Actions
-                            </TableHead> */}
-
 
                             <TableHead className="py-3.5 pl-3 pr-6 text-right text-xs font-bold uppercase tracking-wider text-slate-500">
                                 Actions

@@ -4,6 +4,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Booking } from "../_types/booking";
+import PayNowButton from "./PayNowButton";
 
 type Props = {
     booking: Booking;
@@ -12,7 +13,7 @@ type Props = {
 export default function BookingActions({
     booking,
 }: Props) {
-  
+
     if (booking.status === "Pending") {
         return (
             <div className="flex justify-end gap-2">
@@ -70,9 +71,10 @@ export default function BookingActions({
     ) {
         return (
             <div className="flex justify-end gap-2">
-                <Button size="sm">
-                    Pay Now
-                </Button>
+                <PayNowButton
+                    bookingId={booking.id}
+                    size="sm"
+                />
 
                 <Button
                     size="sm"
