@@ -73,7 +73,7 @@ export default function TechnicianCard({
                         Experience
                     </span>
 
-                    <Badge variant="secondary">
+                    <Badge variant="secondary" className="text-white">
                         {
                             technician.technicianProfile
                                 .experience
@@ -102,36 +102,35 @@ export default function TechnicianCard({
                     </div>
                 </div>
 
-                <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                <div className="mt-3">
+                    <p className="mb-1 text-sm font-medium">
+                        Availability :
+                    </p>
 
-                    <CalendarDays className="mt-0.5 size-4" />
+                    <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <CalendarDays className="mt-0.5 size-4" />
 
-                    <span>
-                        {
-                            technician.availability
-                                .workingDays
-                                .join(", ")
-                        }
-                    </span>
-
+                        <span>
+                            {technician.availability.workingDays.join(", ")}
+                        </span>
+                    </div>
                 </div>
 
-                <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">
-                    {
-                        technician.technicianProfile
-                            .bio
-                    }
-                </p>
+                <div>
+                    <p className="mb-1 text-sm font-medium">
+                        Bio :
+                    </p>
 
-                <Button
-                    className="mt-4 w-full"
-                >
-                    <Link
-                        href={`/technicians/${technician.id}`}
-                    >
+                    <p className="line-clamp-3 text-sm leading-6 text-muted-foreground">
+                        {technician.technicianProfile.bio || "No bio available."}
+                    </p>
+                </div>
+
+                <Link href={`/technicians/${technician.id}`}>
+                    <Button className="mt-4 w-full">
                         View Details
-                    </Link>
-                </Button>
+                    </Button>
+                </Link>
 
             </div>
         </div>

@@ -1,5 +1,5 @@
 import { getTechniciansAction } from "./_actions/getTechniciansAction";
-// import TechnicianGrid from "./_components/TechnicianGrid";
+import TechnicianGrid from "./_components/TechnicianGrid";
 
 export default async function TechniciansPage() {
     const result = await getTechniciansAction();
@@ -37,7 +37,8 @@ export default async function TechniciansPage() {
     }
 
     return (
-        <section className="container mx-auto py-14">
+       <div className="bg-gray-100">
+         <section className="container mx-auto py-14">
             <div className="mb-10">
                 <h1 className="text-4xl font-bold">
                     Our Technicians
@@ -49,9 +50,10 @@ export default async function TechniciansPage() {
                 </p>
             </div>
 
-            {/* <TechnicianGrid
+            <TechnicianGrid
                 technicians={result.data}
-            /> */}
+            />
         </section>
+       </div>
     );
 }

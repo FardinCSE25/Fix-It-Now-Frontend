@@ -20,8 +20,8 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { getMe } from "@/services/getMe";
-import { getMyBookings } from "./_actions/getMyBookings"; // 👈 আপনার Customer Bookings Action Path
-import { getMyPaymentHistory } from "./_actions/getMyPaymentHistory"; // 👈 আপনার Payments Action Path
+import { getMyBookings } from "./_actions/getMyBookings";
+import { getMyPaymentHistory } from "./_actions/getMyPaymentHistory";
 import { Booking } from "./_types/booking";
 import { Payment } from "./_types/payment";
 
