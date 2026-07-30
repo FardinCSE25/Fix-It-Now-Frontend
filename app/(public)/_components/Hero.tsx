@@ -51,7 +51,7 @@ const Hero = () => {
               </Link>
 
 
-              <Link href="/register">
+              <Link href="/register?role=Technician">
                 <Button
                   size="lg"
                   variant="outline"

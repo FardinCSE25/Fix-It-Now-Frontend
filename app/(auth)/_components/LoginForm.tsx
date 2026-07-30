@@ -1,118 +1,130 @@
 "use client";
 
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
 
-import { loginAction } from "../_actions/loginAction";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { loginAction } from "../_actions/loginAction";
 
-const LoginForm = () => {
-  const searchParams = useSearchParams();
-  const redirectTo = searchParams.get("redirectTo") ?? "";
+export default function LoginForm() {
+    const searchParams = useSearchParams();
+    const redirectTo = searchParams.get("redirectTo") ?? "";
 
-  const [showPassword, setShowPassword] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
-  const [state, action, pending] = useActionState(
-    loginAction.bind(null, redirectTo),
-    null
-  );
+    const [state, action, pending] = useActionState(
+        loginAction.bind(null, redirectTo),
+        null
+    );
 
-  useEffect(() => {
-    if (!state) return;
+    useEffect(() => {
+        if (!state) return;
 
-    if (state.success) {
-      toast.success(state.message || "Login successful");
-      return;
-    }
+        if (state.success) {
+            toast.success(state.message);
+            return;
+        }
 
-    toast.error(state.message || "Login failed");
-  }, [state]);
+        toast.error(state.message);
+    }, [state]);
 
-  return (
-    <form action={action}>
-      <Card className="space-y-5 border-0 p-0 shadow-none">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
-            Email Address
-          </label>
+    return (
+        <form action={action} className="space-y-6">
+            {/* Email */}
 
-          <Input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-        </div>
+            <div className="space-y-2">
+                <label className="text-sm font-semibold">
+                    Email Address
+                </label>
 
-        <div className="space-y-2">
-          <label className="text-sm font-medium">
-            Password
-          </label>
+                <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
 
-          <div className="relative">
-            <Input
-              name="password"
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter your password"
-              required
-            />
+                    <Input
+                        name="email"
+                        type="email"
+                        required
+                        placeholder="Enter your email"
+                        className="h-12 rounded-xl pl-12"
+                    />
+                </div>
+            </div>
 
-            <button
-              type="button"
-              onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-primary"
+            {/* Password */}
+
+            <div className="space-y-2">
+                <label className="text-sm font-semibold">
+                    Password
+                </label>
+
+                <div className="relative">
+                    <Lock className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+
+                    <Input
+                        name="password"
+                        required
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter your password"
+                        className="h-12 rounded-xl px-12"
+                    />
+
+                    <button
+                        type="button"
+                        onClick={() => setShowPassword((prev) => !prev)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition hover:text-primary"
+                    >
+                        {showPassword ? (
+                            <EyeOff size={20} />
+                        ) : (
+                            <Eye size={20} />
+                        )}
+                    </button>
+                </div>
+            </div>
+
+            {/* Submit */}
+
+            <Button
+                type="submit"
+                disabled={pending}
+                className="h-12 w-full rounded-xl bg-linear-to-r from-primary to-secondary text-base font-semibold text-white shadow-lg transition hover:scale-[1.02]"
             >
-              {showPassword ? (
-                <EyeOff size={18} />
-              ) : (
-                <Eye size={18} />
-              )}
-            </button>
-          </div>
-        </div>
+                {pending ? (
+                    <>
+                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        Signing In...
+                    </>
+                ) : (
+                    "Sign In"
+                )}
+            </Button>
 
-        <div className="flex justify-end">
-          <Link
-            href="/forgot-password"
-            className="text-sm text-primary hover:underline"
-          >
-            Forgot Password?
-          </Link>
-        </div>
+            {/* Divider */}
 
-        <Button
-          type="submit"
-          disabled={pending}
-          className="w-full bg-gradient-to-r from-primary to-secondary"
-        >
-          {pending ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Signing In...
-            </>
-          ) : (
-            "Sign In"
-          )}
-        </Button>
+            <div className="flex items-center gap-4">
+                <div className="h-px flex-1 bg-border" />
+                <span className="text-sm text-muted-foreground">
+                    or
+                </span>
+                <div className="h-px flex-1 bg-border" />
+            </div>
 
-        <p className="text-center text-sm text-muted-foreground">
-          Don&apos;t have an account?{" "}
-          <Link
-            href="/register"
-            className="font-semibold text-primary hover:underline"
-          >
-            Create Account
-          </Link>
-        </p>
-      </Card>
-    </form>
-  );
-};
+            {/* Register */}
 
-export default LoginForm;
+            <p className="text-center text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
+                <Link
+                    href="/register"
+                    className="font-semibold text-primary transition hover:underline"
+                >
+                    Create Account
+                </Link>
+            </p>
+        </form>
+    );
+}
