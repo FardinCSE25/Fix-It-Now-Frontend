@@ -17,7 +17,7 @@ const DashboardLayout = async ({
         
         <div className="flex flex-1 flex-col min-w-0">
           {/* Header Bar */}
-          <header className="flex h-14 items-center gap-4 border-b bg-background px-6">
+          <header className="flex h-16.25 items-center gap-4 border-b bg-background px-6">
             <h1 className="text-xl font-semibold capitalize">
               {user?.data?.role} Dashboard
             </h1>

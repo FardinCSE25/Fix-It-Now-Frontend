@@ -20,6 +20,7 @@ export default function BookingActions({
                 <Button
                     size="sm"
                     variant="secondary"
+                    className="text-white"
                     disabled
                 >
                     Waiting Approval

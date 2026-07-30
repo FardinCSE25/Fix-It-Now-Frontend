@@ -17,7 +17,7 @@ type Props = {
 };
 
 export default function BookingTable({ bookings }: Props) {
-    if (!bookings.length) {
+    if (!bookings?.length) {
         return (
             <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50/50 py-16 text-center">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-500">
