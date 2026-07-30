@@ -46,13 +46,8 @@ const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
         icon: Users,
     },
     {
-        label: "All Bookings",
-        href: "/admin-dashboard/bookings",
-        icon: CalendarDays,
-    },
-    {
-        label: "All Categories",
-        href: "/admin-dashboard/categories",
+        label: "All Reviews",
+        href: "/admin-dashboard/reviews",
         icon: FolderKanban,
     },
 ];

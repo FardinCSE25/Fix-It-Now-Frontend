@@ -125,7 +125,9 @@ export default function BookingActions({
                 variant="success"
                 disabled
             >
-                Completed
+                 {booking.status === "Completed"
+                        ? "Service Provided"
+                        : booking.status}
             </Button>
 
             <Button

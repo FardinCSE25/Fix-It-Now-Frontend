@@ -25,6 +25,7 @@ export interface Booking {
     technician: Technician;
 
     payment: Payment | null;
+    hasReviewed: boolean
 }
 
 export interface Service {

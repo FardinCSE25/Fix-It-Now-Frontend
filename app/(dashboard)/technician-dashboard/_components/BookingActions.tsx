@@ -92,8 +92,21 @@ export default function BookingActions({
                 {loadingStatus === "Completed" ? (
                     <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
-                    "Completed"
+                    "Complete"
                 )}
+            </Button>
+        );
+    }
+
+    if (booking.status === "Completed") {
+        return (
+            <Button
+                size="sm"
+                disabled
+                variant="secondary"
+                className="text-white"
+            >
+                Completed
             </Button>
         );
     }
