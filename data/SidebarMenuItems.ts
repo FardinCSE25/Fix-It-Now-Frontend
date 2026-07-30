@@ -14,6 +14,11 @@ const CUSTOMER_SIDEBAR_ITEMS: SidebarItem[] = [
         href: "/dashboard/my-payments",
         icon: CreditCard,
     },
+    {
+        label: "My Bookings",
+        href: "/dashboard/my-bookings",
+        icon: CalendarDays,
+    }
 ];
 
 const TECHNICIAN_SIDEBAR_ITEMS: SidebarItem[] = [
