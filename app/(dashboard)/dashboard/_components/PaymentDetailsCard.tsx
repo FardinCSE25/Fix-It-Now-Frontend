@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 import {
-    Calendar,
-    CreditCard,
-    Mail,
-    ReceiptText,
-    UserRound,
-    Wrench,
+  Calendar,
+  CreditCard,
+  Mail,
+  ReceiptText,
+  UserRound,
+  Wrench,
 } from "lucide-react";
 
 import { Payment } from "../_types/payment";
@@ -198,7 +198,9 @@ export default function PaymentDetailsCard({
                 </span>
 
                 <Badge>
-                  {booking.status}
+                  {booking.status === "Completed"
+                    ? "Service Provided"
+                    : booking.status}
                 </Badge>
               </div>
 

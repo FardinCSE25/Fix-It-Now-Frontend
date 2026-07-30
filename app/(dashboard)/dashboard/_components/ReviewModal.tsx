@@ -5,15 +5,16 @@ import { useState, useTransition } from "react";
 import { toast } from "sonner";
 
 import {
-    Dialog,
-    DialogContent,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { useRouter } from "next/navigation";
 import { createReviewAction } from "../_actions/createReviewAction";
 
 
@@ -28,6 +29,7 @@ export default function ReviewModal({
   open,
   onOpenChange,
 }: Props) {
+  const router = useRouter();
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
@@ -61,7 +63,7 @@ export default function ReviewModal({
       toast.success(result.message);
 
       onOpenChange(false);
-
+      router.refresh()
       setRating(0);
       setComment("");
     });
@@ -98,11 +100,10 @@ export default function ReviewModal({
                   }
                 >
                   <Star
-                    className={`size-8 transition ${
-                      star <= rating
+                    className={`size-8 transition ${star <= rating
                         ? "fill-yellow-400 text-yellow-400"
                         : "text-slate-300"
-                    }`}
+                      }`}
                   />
                 </button>
               ))}

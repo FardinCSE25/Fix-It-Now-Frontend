@@ -1,11 +1,10 @@
 import { SidebarItem } from "@/lib/types/SidebarItems";
 import {
-    CalendarClock,
     CalendarDays,
     CreditCard,
     FolderKanban,
     UserCheck2,
-    Users,
+    Users
 } from "lucide-react";
 
 const CUSTOMER_SIDEBAR_ITEMS: SidebarItem[] = [
@@ -28,11 +27,6 @@ const TECHNICIAN_SIDEBAR_ITEMS: SidebarItem[] = [
         icon: UserCheck2,
     },
     {
-        label: "My Availability Schedule",
-        href: "/technician-dashboard/availability",
-        icon: CalendarClock,
-    },
-    {
         label: "My Bookings",
         href: "/technician-dashboard/my-bookings",
         icon: CalendarDays,
@@ -41,7 +35,7 @@ const TECHNICIAN_SIDEBAR_ITEMS: SidebarItem[] = [
 
 const ADMIN_SIDEBAR_ITEMS: SidebarItem[] = [
     {
-        label: "Users",
+        label: "All Users",
         href: "/admin-dashboard/users",
         icon: Users,
     },

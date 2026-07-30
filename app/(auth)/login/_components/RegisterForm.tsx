@@ -15,6 +15,7 @@ import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { registerAction } from "../../_actions/registerAction";
 
 
@@ -213,8 +214,8 @@ export default function RegisterForm() {
                         {/* Working Days */}
 
                         <div className="relative">
-
-                            <CalendarDays className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+                            <Label className="mb-2">Working Days (Comma Separated)</Label>
+                            <CalendarDays className="absolute left-4 mt-2.5 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
 
                             <Input
                                 name="workingDays"
