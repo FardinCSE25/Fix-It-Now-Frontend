@@ -21,7 +21,6 @@ export default function ServiceCard({
   service,
   onView,
 }: Props) {
-console.log(user);
 
   const [isPending, startTransition] = useTransition();
 

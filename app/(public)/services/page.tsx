@@ -29,14 +29,14 @@ export default async function ServicesPage({
 
     return (
         <div className="bg-gray-100">
-        <section className="space-y-8 py-14 container mx-auto">
-            {/* Header */}
-            <ServicesHeader isTechnician={isTechnician} categories={categories.data} />
+            <section className="space-y-8 py-14 container mx-auto">
+                {/* Header */}
+                <ServicesHeader isTechnician={isTechnician} categories={categories.data} />
 
-            {/* Services */}
-            <ServiceGrid isTechnician={isTechnician} user={user?.data} services={services.data} />
+                {/* Services */}
+                <ServiceGrid isTechnician={isTechnician} user={user?.data} services={services.data} />
 
-        </section>
+            </section>
         </div>
     );
 }

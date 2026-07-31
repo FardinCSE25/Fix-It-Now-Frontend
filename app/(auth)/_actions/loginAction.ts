@@ -42,7 +42,6 @@ export const loginAction = async (
         "Content-Type": "application/json",
       },
       body: JSON.stringify(payload),
-      cache: "no-store",
     }
   );
 
@@ -60,10 +59,8 @@ export const loginAction = async (
 
   cookieStore.set("accessToken", result.data.accessToken, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 3, // 3 days
+    maxAge: 60 * 60 * 24 * 3,
   });
 
   const decodedToken = jwt.decode(result.data.accessToken) as JwtPayload;
@@ -76,17 +73,13 @@ export const loginAction = async (
     redirect(redirectTo);
   }
 
-  switch (decodedToken.role) {
-    case "Customer":
-      redirect("/dashboard");
-
-    case "Technician":
-      redirect("/technician-dashboard");
-
-    case "Admin":
-      redirect("/admin-dashboard");
-
-    default:
-      redirect("/");
+  if (decodedToken.role === "Customer") {
+    redirect("/dashboard");
+  } else if (decodedToken.role === "Technician") {
+    redirect("/technician-dashboard");
+  } else if (decodedToken.role === "Admin") {
+    redirect("/admin-dashboard");
+  } else {
+    redirect("/");
   }
 };
