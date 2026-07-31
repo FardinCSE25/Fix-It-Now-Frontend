@@ -34,7 +34,7 @@ export default async function ServicesPage({
             <ServicesHeader isTechnician={isTechnician} categories={categories.data} />
 
             {/* Services */}
-            <ServiceGrid isTechnician={isTechnician} services={services.data} />
+            <ServiceGrid isTechnician={isTechnician} user={user?.data} services={services.data} />
 
         </section>
         </div>

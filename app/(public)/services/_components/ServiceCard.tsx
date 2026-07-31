@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { User } from "@/lib/types/userProfile";
 import { ArrowRight, Loader2, Wrench } from "lucide-react";
 import { useTransition } from "react";
 import { toast } from "sonner";
@@ -9,15 +10,18 @@ import { Service } from "../_types/service";
 
 type Props = {
   isTechnician: boolean
+  user: User;
   service: Service;
   onView: (service: Service) => void;
 };
 
 export default function ServiceCard({
   isTechnician,
+  user,
   service,
   onView,
 }: Props) {
+console.log(user);
 
   const [isPending, startTransition] = useTransition();
 
@@ -67,8 +71,8 @@ export default function ServiceCard({
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
 
-        {!isTechnician &&
-          (service.bookings.length === 0 ? (
+        {user?.id && !isTechnician && (
+          service.bookings.length === 0 ? (
             <Button
               className="flex-1"
               disabled={isPending}
@@ -90,7 +94,8 @@ export default function ServiceCard({
             >
               Booked
             </Button>
-          ))}
+          )
+        )}
       </div>
     </div >
   );

@@ -39,10 +39,13 @@ export async function getAllServices(
     {
       headers: token
         ? {
-            Authorization: `Bearer ${token}`,
-          }
+          Authorization: `Bearer ${token}`,
+        }
         : {},
-      cache: "no-store",
+
+      next: {
+        tags: ["services"],
+      },
     }
   );
 

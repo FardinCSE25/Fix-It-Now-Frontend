@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation"; // 👈 ১. useSearchParams ইম্পোর্ট করুন
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -19,10 +18,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { registerAction } from "../_actions/registerAction";
 
-export default function RegisterForm() {
-    const searchParams = useSearchParams();
-    
-    const initialRole = searchParams.get("role") === "Technician" ? "Technician" : "Customer";
+type RegisterFormProps = {
+    role: string;
+};
+
+export default function RegisterForm({
+    role: initialRole,
+}: RegisterFormProps) {
 
     const [role, setRole] = useState(initialRole);
 

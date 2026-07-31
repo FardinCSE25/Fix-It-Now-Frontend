@@ -2,17 +2,20 @@
 
 import { useState } from "react";
 
+import { User } from "@/lib/types/userProfile";
 import { Service } from "../_types/service";
 import ServiceCard from "./ServiceCard";
 import ServiceDetailModal from "./ServiceDetailModal";
 
 type Props = {
   isTechnician: boolean;
+  user: User;
   services: Service[];
 };
 
 export default function ServiceGrid({
   isTechnician,
+  user,
   services,
 }: Props) {
   const [selectedService, setSelectedService] =
@@ -26,6 +29,7 @@ console.log(services);
           <ServiceCard
             key={service.id}
             isTechnician={isTechnician}
+            user={user}
             service={service}
             onView={setSelectedService}
           />

@@ -2,7 +2,6 @@
 
 import { Eye, EyeOff, Loader2, Lock, Mail } from "lucide-react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -11,9 +10,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { loginAction } from "../_actions/loginAction";
 
-export default function LoginForm() {
-    const searchParams = useSearchParams();
-    const redirectTo = searchParams.get("redirectTo") ?? "";
+type LoginFormProps = {
+    redirectTo: string;
+};
+
+export default function LoginForm({
+    redirectTo,
+}: LoginFormProps) {
 
     const [showPassword, setShowPassword] = useState(false);
 

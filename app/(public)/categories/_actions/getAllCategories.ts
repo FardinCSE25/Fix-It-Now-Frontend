@@ -8,9 +8,10 @@ export async function getAllCategories(): Promise<CategoriesResponse> {
         `${process.env.BACKEND_API_URL}/api/categories`,
         {
             method: "GET",
-            cache: "no-store",
-        }
-    );
+            next: {
+                tags: ["categories"],
+            }
+        })
 
     const result: CategoriesResponse = await res.json();
 

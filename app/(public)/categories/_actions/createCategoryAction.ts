@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 export type CreateCategoryState = {
@@ -55,7 +55,9 @@ export async function createCategoryAction(
       };
     }
 
-    revalidatePath("/categories");
+    revalidateTag("categories", {
+      expire: 0,
+    });
 
     return {
       success: true,

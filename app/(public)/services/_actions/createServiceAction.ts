@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 
 type ActionState = {
@@ -48,7 +48,9 @@ export async function createServiceAction(
       };
     }
 
-    revalidatePath("/services");
+    revalidateTag("services", {
+      expire: 0,
+    });
 
     return {
       success: true,
