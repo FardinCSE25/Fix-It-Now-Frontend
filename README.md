@@ -8,7 +8,7 @@ A modern and responsive home service marketplace built with **Next.js**, where c
 
 ## 🌐 Live Demo
 
-🚀 **Frontend:** https://your-frontend.vercel.app
+🚀 **Frontend:** https://fixitnow-frontend-nine.vercel.app
 
 🔗 **Backend API:** https://fix-it-now-rho.vercel.app
 
@@ -133,7 +133,7 @@ bun install
 Create an environment file
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:7000/api
+BACKEND_API_URL=http://localhost:7000/api
 ```
 
 Run the development server
