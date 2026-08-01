@@ -20,20 +20,18 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import { getMe } from "@/services/getMe";
-import { getAllReviews } from "./_actions/getAllReviews"; // 👈 আপনার API Action Path
-import { getAllUsers } from "./_actions/getAllUsers"; // 👈 আপনার API Action Path
+import { getAllReviews } from "./_actions/getAllReviews";
+import { getAllUsers } from "./_actions/getAllUsers";
 import { Review } from "./_types/review";
 import { User } from "./_types/user";
 
 export default async function AdminDashboard() {
-    // ১. রিয়েল API ডাটা ফেচ করা
-    const [userRes, reviewsRes, usersRes] = await Promise.all([
-        getMe(),
-        getAllReviews(),
-        getAllUsers(),
-    ]);
 
-    const admin = userRes?.data;
+    const loggedInUserRes = await getMe()
+    const reviewsRes = await getAllReviews()
+    const usersRes = await getAllUsers()
+
+    const admin = loggedInUserRes?.data;
     const reviews = reviewsRes?.data || [];
     const users = usersRes?.data || [];
 
@@ -42,7 +40,6 @@ export default async function AdminDashboard() {
     const totalCustomers = users.filter((u: User) => u.role === "Customer").length;
     const totalReviews = reviews.length;
 
-    // Average Rating বের করা
     const avgRating = totalReviews > 0
         ? (reviews.reduce((acc: number, r: Review) => acc + Number(r.rating || 0), 0) / totalReviews).toFixed(1)
         : "0.0";

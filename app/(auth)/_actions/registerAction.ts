@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 
+import { JwtPayload } from "jsonwebtoken";
 import { redirect } from "next/navigation";
 
 type RegisterState = {
@@ -13,7 +13,6 @@ export const registerAction = async (
     prevState:RegisterState|null,
     formData:FormData
 ):Promise<RegisterState> => {
-
 
     const name = formData.get("name")?.toString().trim();
     const email = formData.get("email")?.toString().trim();
@@ -30,15 +29,12 @@ export const registerAction = async (
 
     }
 
-
-
-    const payload : any = {
+    const payload : JwtPayload = {
         name,
         email,
         password,
         role
     };
-
 
     if(role === "Technician"){
 
@@ -50,23 +46,17 @@ export const registerAction = async (
             .map(day=>day.trim())
             .filter(Boolean);
 
-
-
         payload.experience =
             formData.get("experience")?.toString();
-
 
         payload.bio =
             formData.get("bio")?.toString() || "";
 
-
         payload.workingDays =
             workingDays;
 
-
         payload.startTime =
             formData.get("startTime")?.toString();
-
 
         payload.endTime =
             formData.get("endTime")?.toString();
@@ -85,11 +75,7 @@ export const registerAction = async (
         }
     );
 
-
-
     const result = await res.json();
-
-
 
     if(!result.success){
 
@@ -101,8 +87,5 @@ export const registerAction = async (
 
     }
 
-
-
     redirect("/login");
-
 }
