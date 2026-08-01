@@ -1,4 +1,4 @@
-# 🔧 FixItNow Frontend
+# 🔧 Fix It Now Frontend
 
 > **Your Trusted Home Service Platform**
 
@@ -84,7 +84,6 @@ This frontend is built using **Next.js App Router** and consumes the FixItNow ba
 - TypeScript
 - Tailwind CSS
 - Shadcn/UI
-- Zod
 - JWT Authentication
 - Stripe
 - Sonner
@@ -133,7 +132,7 @@ bun install
 Create an environment file
 
 ```env
-BACKEND_API_URL=http://localhost:7000/api
+BACKEND_API_URL=http://localhost:7000
 ```
 
 Run the development server
@@ -195,11 +194,11 @@ Leave Review
 
 ## 📡 Backend API
 
-This frontend consumes the REST API developed in Assignment 4.
+This frontend consumes the REST API developed in Fix It Now Backend.
 
 Backend Repository:
 
-https://github.com/FardinCSE25/Fix-It-Now
+https://github.com/FardinCSE25/Fix-It-Now-Server
 
 Backend API:
 
@@ -210,9 +209,6 @@ https://fix-it-now-rho.vercel.app
 ## 👨‍💻 Developer
 
 **Fardin Ahmed**
-
-GitHub:
-https://github.com/FardinCSE25
 
 LinkedIn:
 https://www.linkedin.com/in/fardin-ahmed-cse/
