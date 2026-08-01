@@ -20,12 +20,7 @@ export const getAllUsers = async () => {
             headers: {
                 Cookie: `accessToken=${accessToken}`,
             },
-
-            cache: "force-cache",
-            next: {
-                revalidate: 0,
-                tags: ["users"]
-            }
+            cache: "no-store",
         }
     );
 

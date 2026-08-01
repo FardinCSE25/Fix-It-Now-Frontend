@@ -16,17 +16,15 @@ export const getMe = async () => {
         }
     }
 
-    const res = await fetch(`${process.env.BACKEND_API_URL}/api/auth/me`, {
-        headers: {
-            Cookie: `accessToken=${accessToken}`
-        },
-
-        cache: "force-cache",
-        next: {
-            revalidate: 0,
-            tags: ["my-profile"]
+    const res = await fetch(
+        `${process.env.BACKEND_API_URL}/api/auth/me`,
+        {
+            headers: {
+                Cookie: `accessToken=${accessToken}`,
+            },
+            cache: "no-store",
         }
-    });
+    );
 
     const result = await res.json();
 
