@@ -31,7 +31,7 @@ export default function RootLayout({
         geist.variable
       )}
     >
-      <body>
+      <body suppressHydrationWarning className="antialiased">
         <ThemeProvider>
           {children}
 

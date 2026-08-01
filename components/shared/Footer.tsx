@@ -96,7 +96,7 @@ export default function Footer() {
                 <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
                     © {new Date().getFullYear()}{" "}
                     <span className="font-semibold text-primary">
-                        FixItNow
+                        Fix It Now
                     </span>
                     . All rights reserved.
                 </div>

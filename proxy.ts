@@ -13,15 +13,15 @@ const PUBLIC_ROUTES = [
 ];
 
 const CUSTOMER_ROUTES = [
-    "/dashboard",
+    "/dashboard"
 ];
 
 const TECHNICIAN_ROUTES = [
-    "/technician-dashboard",
+    "/technician-dashboard"
 ];
 
 const ADMIN_ROUTES = [
-    "/admin-dashboard",
+    "/admin-dashboard"
 ];
 
 export async function proxy(request: NextRequest) {
@@ -48,6 +48,16 @@ export async function proxy(request: NextRequest) {
 
     if (decodedAccessToken?.success && decodedAccessToken.data) {
         user = (decodedAccessToken.data as JwtPayload);
+    }
+
+    if (accessToken && !decodedAccessToken?.success) {
+        const response = NextResponse.redirect(
+            new URL("/login", request.url)
+        );
+
+        response.cookies.delete("accessToken");
+
+        return response;
     }
 
     if (user && isAuthRoute) {
