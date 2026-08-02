@@ -8,13 +8,11 @@ import ServiceCard from "./ServiceCard";
 import ServiceDetailModal from "./ServiceDetailModal";
 
 type Props = {
-  isTechnician: boolean;
   user: User;
   services: Service[];
 };
 
 export default function ServiceGrid({
-  isTechnician,
   user,
   services,
 }: Props) {
@@ -43,7 +41,6 @@ export default function ServiceGrid({
         {services?.map((service) => (
           <ServiceCard
             key={service.id}
-            isTechnician={isTechnician}
             user={user}
             service={service}
             onView={setSelectedService}

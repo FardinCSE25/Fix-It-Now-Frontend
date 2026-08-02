@@ -82,7 +82,7 @@ export default function BookingRow({ booking, isTechnician }: Props) {
             "bg-slate-100 text-slate-700 border-slate-200"
           }`}
         >
-          ● {booking.status}
+          {booking.status}
         </Badge>
       </TableCell>
 

@@ -9,14 +9,12 @@ import { createBookingAction } from "../_actions/createBookingAction";
 import { Service } from "../_types/service";
 
 type Props = {
-  isTechnician: boolean
   user: User;
   service: Service;
   onView: (service: Service) => void;
 };
 
 export default function ServiceCard({
-  isTechnician,
   user,
   service,
   onView,
@@ -62,7 +60,6 @@ export default function ServiceCard({
 
       <div className="mt-6 flex items-center gap-3">
         <Button
-          variant="outline"
           className="flex-1"
           onClick={() => onView(service)}
         >
@@ -70,7 +67,7 @@ export default function ServiceCard({
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
 
-        {user?.id && !isTechnician && (
+        {user?.id && user?.role === "Customer" && (
           service.bookings.length === 0 ? (
             <Button
               className="flex-1"

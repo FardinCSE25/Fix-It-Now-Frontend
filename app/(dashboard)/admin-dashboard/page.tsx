@@ -97,7 +97,7 @@ export default async function AdminDashboard() {
                             </Button>
                         </Link>
 
-                        <Link href="/admin-dashboard/all-reviews">
+                        <Link href="/admin-dashboard/reviews">
                             <Button className="rounded-xl bg-purple-600 text-white hover:bg-purple-700 shadow-xs">
                                 <MessageSquare className="mr-2 h-4 w-4" />
                                 All Reviews
