@@ -33,6 +33,8 @@ export default function RootLayout({
     >
       <body suppressHydrationWarning className="antialiased">
         <ThemeProvider>
+        <title>Fix It Now</title>
+
           {children}
 
           <Toaster

@@ -32,7 +32,7 @@ const Hero = () => {
 
 
             <p className="max-w-xl text-lg text-muted-foreground">
-              FixItNow connects you with skilled professionals for repairs,
+              Fix It Now connects you with skilled professionals for repairs,
               maintenance, and home services. Book reliable technicians
               anytime, anywhere.
             </p>

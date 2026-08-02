@@ -16,9 +16,9 @@ A modern and responsive home service marketplace built with **Next.js**, where c
 
 ## 📖 Project Overview
 
-FixItNow is a full-featured home service platform that connects **Customers**, **Technicians**, and **Admins** in a single application.
+Fix It Now is a full-featured home service platform that connects **Customers**, **Technicians**, and **Admins** in a single application.
 
-This frontend is built using **Next.js App Router** and consumes the FixItNow backend REST API developed previously.
+This frontend is built using **Next.js App Router** and consumes the Fix It Now backend REST API developed previously.
 
 ---
 

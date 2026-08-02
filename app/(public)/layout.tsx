@@ -11,7 +11,7 @@ const PublicGroupLayout = async (
 ) => {
     const user = await getMe();
 
-    return (
+    return ( 
         <div>
             <Navbar user={user} />
             {children}
